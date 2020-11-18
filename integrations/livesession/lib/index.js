@@ -118,31 +118,3 @@ LiveSession.prototype.identify = function(identify) {
     });
   }
 };
-
-/**
- * Page.
- *
- * @api public
- * @param {Page} page
- */
-
-LiveSession.prototype.page = function(page) {
-  this.track(page.track());
-};
-
-/**
- * Track. Passes the events directly to LiveSession via `setCustomParams` method.
- *
- * https://developers.livesession.io/javascript-api/methods/#setcustomparams
- * @param {Track} track
- */
-
-LiveSession.prototype.track = function(track) {
-  var params = Object.assign({}, track.properties(), {
-    eventName: track.event()
-  });
-
-  window.__ls('setCustomParams', {
-    params: params
-  });
-};

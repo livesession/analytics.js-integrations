@@ -122,33 +122,5 @@ describe('LiveSession', function() {
         });
       });
     });
-
-    describe('#track', function() {
-      beforeEach(function() {
-        analytics.stub(window, '__ls');
-      });
-
-      it('should send track event name and properties', function() {
-        analytics.track('foo', { some_field: 'field_value' });
-        analytics.called(window.__ls, 'setCustomParams', {
-          params: {
-            some_field: 'field_value',
-            eventName: 'foo'
-          }
-        });
-      });
-    });
-
-    describe('#page', function() {
-      beforeEach(function() {
-        analytics.stub(window, '__ls');
-      });
-
-      it('should not track unnamed pages by default', function() {
-        analytics.page('Category', 'Name');
-
-        analytics.calledOnce(window.__ls);
-      });
-    });
   });
 });
